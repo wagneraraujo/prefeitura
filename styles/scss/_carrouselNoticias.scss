@@ -1,0 +1,25 @@
+.carousel-caption {
+    background-color: $verde;
+    width: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0px;
+    text-align: left;
+    z-index: 3;
+    padding: 10px 16px;
+
+    h5 {
+        font-size: 18px;
+    }
+}
+.carousel-indicators {
+    display: none;
+}
+.imagemCArrousel {
+    height: 300px;
+}
+.titleSecoes {
+    font-weight: bold;
+    color: $azul;
+    margin-top: 26px;
+}

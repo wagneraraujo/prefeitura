@@ -1,0 +1,69 @@
+@mixin for-phone-only {
+    @media (max-width: 599px) {
+        @content;
+    }
+}
+@mixin for-tablet-portrait-up {
+    @media (min-width: 600px) {
+        @content;
+    }
+}
+@mixin for-tablet-landscape-up {
+    @media (min-width: 900px) {
+        @content;
+    }
+}
+@mixin for-max-tablet {
+    @media (max-width: 999px) {
+        @content;
+    }
+}
+@mixin for-min-desktop {
+    @media (min-width: 900px) and (max-width: 1140px) {
+        @content;
+    }
+}
+@mixin for-min-tablet {
+    @media (min-width: 600px) and (max-width: 899px) {
+        @content;
+    }
+}
+@mixin for-desktop-up {
+    @media (min-width: 1370px) {
+        @content;
+    }
+}
+@mixin for-big-desktop-up {
+    @media (min-width: 1800px) {
+        @content;
+    }
+}
+@mixin transicao {
+    transition: all 0.4s ease-out;
+}
+
+@mixin btnClean($back, $fonteColor, $border) {
+    border: 2px solid $border;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    color: $fonteColor;
+    display: inline-block;
+    background: $back;
+    text-align: center;
+    font-weight: 300;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    text-decoration: none;
+    margin: 8px 0px;
+    @include transicao;
+    &:hover,
+    &:focus {
+        background-color: $primary;
+        color: #fff;
+        border: 2px solid $border;
+    }
+}

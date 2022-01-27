@@ -1,0 +1,42 @@
+.itemAtende {
+    // background-color: $verde;
+    list-style-type: none;
+    flex-direction: row;
+    margin: 2px;
+    width: 31.3%;
+    padding: 6px 2px 2px 8px;
+
+    .linhaI {
+        display: flex;
+        align-items: center;
+        margin-bottom: 6px;
+
+        h5 {
+            font-weight: bold;
+            font-size: 16px;
+            position: relative;
+            top: 5px;
+            color: #fff;
+        }
+        color: $preto;
+    }
+    a {
+        text-decoration: none;
+        color: #fff;
+    }
+    p {
+        font-size: 12px;
+    }
+
+    &:hover {
+        background-color: $amarelo;
+    }
+}
+.ulLinhaAtende {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.contentAtende {
+    margin-top: 26px;
+}

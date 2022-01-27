@@ -1,0 +1,220 @@
+.allLinha {
+}
+.linhaColunaTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    a {
+        color: #fff;
+        text-decoration: none;
+        &:hover {
+            color: $amarelo;
+        }
+    }
+    ul {
+        display: flex;
+        list-style-type: none;
+        padding: 0;
+        align-items: center;
+        float: right;
+
+        li {
+            position: relative;
+            top: 8px;
+            margin: 0 6px;
+
+            i {
+                font-size: 18px;
+            }
+        }
+    }
+}
+
+.linhaHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    align-content: center;
+    align-self: center;
+    height: 80px;
+
+    padding: 20px 0px;
+}
+
+#nav-icon1,
+#nav-icon2,
+#nav-icon3,
+#nav-icon4 {
+    width: 34px;
+    height: 45px;
+    position: relative;
+    top: 2px;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+}
+
+#nav-icon1 span,
+#nav-icon3 span,
+#nav-icon4 span {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: $azul;
+    border-radius: 9px;
+    opacity: 1;
+    left: 0;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: 0.25s ease-in-out;
+    -moz-transition: 0.25s ease-in-out;
+    -o-transition: 0.25s ease-in-out;
+    transition: 0.25s ease-in-out;
+}
+
+#nav-icon1 span:nth-child(1) {
+    top: 0px;
+}
+
+#nav-icon1 span:nth-child(2) {
+    top: 10px;
+}
+
+#nav-icon1 span:nth-child(3) {
+    top: 20px;
+}
+
+#nav-icon1.open span:nth-child(1) {
+    top: 18px;
+    -webkit-transform: rotate(135deg);
+    -moz-transform: rotate(135deg);
+    -o-transform: rotate(135deg);
+    transform: rotate(135deg);
+}
+
+#nav-icon1.open span:nth-child(2) {
+    opacity: 0;
+    left: -60px;
+}
+
+#nav-icon1.open span:nth-child(3) {
+    top: 18px;
+    -webkit-transform: rotate(-135deg);
+    -moz-transform: rotate(-135deg);
+    -o-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+}
+.textMenu {
+    position: absolute;
+    font-size: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: $amarelo;
+}
+.ColBusca {
+}
+.colMenu {
+    margin-right: 16px;
+}
+.btnBusca {
+    border: none;
+    background: transparent;
+    font-size: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: $azul;
+    margin-left: 10px;
+
+    span {
+        font-size: 10px;
+        text-transform: uppercase;
+        text-align: center;
+        color: $amarelo;
+        font-weight: bold;
+    }
+}
+
+.linhaCategorias {
+    display: flex;
+    width: 100%;
+    overflow-y: scroll;
+    background-color: $azul;
+    align-items: center;
+    padding: 8px 0px;
+    height: 50px;
+    justify-content: center;
+    ul {
+        padding: 0;
+        display: flex;
+        list-style: none;
+        align-items: center;
+        word-break: keep-all;
+        width: 100%;
+        position: relative;
+        top: 6px;
+        li {
+            margin: 0 2px;
+            word-wrap: normal;
+            word-break: keep-all;
+            a {
+                color: #fff;
+                text-decoration: none;
+                word-break: keep-all;
+                word-wrap: unset;
+                font-size: 12px;
+                padding: 0 4px;
+                word-wrap: normal;
+                &:hover,
+                &:active {
+                    color: $amarelo;
+                }
+            }
+        }
+        li:first-child {
+            color: $amarelo;
+            font-size: 12px;
+        }
+    }
+}
+.buscarContent {
+    width: 100%;
+    background-color: $preto;
+    padding: 8px 2px;
+    display: flex;
+    justify-content: space-between;
+
+    input {
+        background-color: $preto;
+        color: #fff;
+        border: none;
+        outline: none;
+        outline-color: #191919;
+        padding: 5px;
+        width: 100%;
+    }
+    button {
+        color: $azul_claro;
+        border: none;
+        font-size: 22px;
+        outline: none;
+        background-color: transparent;
+    }
+}
+.linhaTextura {
+    height: 16px;
+    background: url("/linhatextura_mobile.png") repeat-x;
+    width: 100%;
+}
