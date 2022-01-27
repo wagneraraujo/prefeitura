@@ -78,13 +78,7 @@ const Home: NextPage = () => {
         </div>
 
         <div className="row mx-auto">
-          <Button
-            variant="primary"
-            disabled={isLoading}
-            onClick={!isLoading ? handleClick : null}
-          >
-            {isLoading ? 'Carregando…' : 'Mais notícias'}
-          </Button>
+          <Button variant="primary">Caregar mais</Button>
         </div>
 
         <div className="row linhabanners">
