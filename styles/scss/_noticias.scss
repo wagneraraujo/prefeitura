@@ -81,3 +81,29 @@
 .linhabanners {
     margin-top: 30px;
 }
+.colNoticiaWideCarrousel {
+    display: none;
+
+    @include for-tablet-landscape-up {
+        display: flex;
+        flex-direction: column;
+
+        .descricaoNotcia {
+            display: none;
+        }
+        .imagemNoticia {
+            width: 110px;
+            height: 70px;
+        }
+        .categorianoticia {
+            display: none;
+        }
+        .itemNoticia {
+            margin: 6px 0;
+            padding-bottom: 6px;
+            h3 {
+                font-size: 12px !important;
+            }
+        }
+    }
+}
