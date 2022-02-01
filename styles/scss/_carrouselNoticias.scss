@@ -17,6 +17,10 @@
 }
 .imagemCArrousel {
     height: 300px;
+
+    @include for-tablet-landscape-up {
+        height: 440px;
+    }
 }
 .titleSecoes {
     font-weight: bold;

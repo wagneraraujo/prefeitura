@@ -1,4 +1,5 @@
-.allLinha {
+.backLinha {
+    background-color: #f7f7f7;
 }
 .linhaColunaTop {
     display: flex;
@@ -40,6 +41,11 @@
     height: 80px;
 
     padding: 20px 0px;
+
+    @include for-tablet-landscape-up() {
+        padding: 40px 0px;
+        height: 120px;
+    }
 }
 
 #nav-icon1,
@@ -121,10 +127,13 @@
     font-weight: bold;
     color: $amarelo;
 }
-.ColBusca {
-}
+
 .colMenu {
     margin-right: 16px;
+
+    @include for-tablet-landscape-up {
+        display: none;
+    }
 }
 .btnBusca {
     border: none;
@@ -156,6 +165,11 @@
     padding: 8px 0px;
     height: 50px;
     justify-content: center;
+
+    @include for-tablet-landscape-up {
+        padding: 8px 0px;
+        height: 60px;
+    }
     ul {
         padding: 0;
         display: flex;
@@ -177,15 +191,24 @@
                 font-size: 12px;
                 padding: 0 4px;
                 word-wrap: normal;
+
                 &:hover,
                 &:active {
                     color: $amarelo;
+                }
+
+                @include for-tablet-landscape-up {
+                    font-size: 14px;
                 }
             }
         }
         li:first-child {
             color: $amarelo;
             font-size: 12px;
+            @include for-tablet-landscape-up {
+                font-size: 14px;
+                margin-right: 16px;
+            }
         }
     }
 }
@@ -217,4 +240,34 @@
     height: 16px;
     background: url("/linhatextura_mobile.png") repeat-x;
     width: 100%;
+}
+.menuDesktop {
+    display: none;
+
+    @include for-tablet-landscape-up() {
+        display: flex;
+        align-items: center;
+    }
+
+    list-style: none;
+    margin-right: 16px;
+
+    li {
+        margin: 0px 8px;
+        position: relative;
+        top: 8px;
+
+        a {
+            text-decoration: none;
+            color: #191919;
+
+            &:hover {
+                color: $amarelo;
+            }
+        }
+    }
+}
+
+.ColBusca {
+    display: flex;
 }

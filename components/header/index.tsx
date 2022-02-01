@@ -16,7 +16,7 @@ export default function Header() {
   }
 
   return (
-    <div>
+    <div className="backLinha">
       <div className="container">
         <div className="linhaHeader">
           <div className="colMenu">
@@ -28,16 +28,33 @@ export default function Header() {
                 <Image
                   src="/logo.png"
                   alt="Prefeitura Municipal de Manacapuru"
-                  width={180}
+                  width={324}
                   height={60}
-                  layout="intrinsic"
                   objectFit="contain"
                   className="mx-auto text-center"
+                  quality={100}
                 />
               </a>
             </Link>
           </div>
           <div className="ColBusca">
+            <ul className="menuDesktop">
+              <li>
+                <Link href="">
+                  <a>A Prefeitura</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="">
+                  <a>Cidade</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="">
+                  <a>Página</a>
+                </Link>
+              </li>
+            </ul>
             <button className="btnBusca" onClick={handleToggleMenu}>
               <FaSearch />
               <span>Buscar</span>

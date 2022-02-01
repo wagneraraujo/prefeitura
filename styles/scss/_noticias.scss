@@ -1,5 +1,15 @@
 .imagemNoticia {
     border: 1px solid $amarelo;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+
+    @include for-tablet-landscape-up {
+        width: 340px;
+        height: 190px;
+        object-fit: cover;
+        margin-right: 16px;
+    }
 }
 .itemNoticia {
     display: flex;
@@ -8,7 +18,25 @@
     color: $preto;
     align-items: center;
     margin: 12px 0;
+    .descricaoNotcia {
+        display: none;
 
+        @include for-tablet-landscape-up {
+            display: block;
+            font-size: 14px;
+            color: #5c5c5c;
+        }
+    }
+    .dataNoticia {
+        display: none;
+
+        @include for-tablet-landscape-up {
+            display: block;
+            font-size: 12px;
+            color: #4b4b4b;
+            margin-bottom: 8px;
+        }
+    }
     .tituloNoticia {
         width: 70%;
         h3 {
