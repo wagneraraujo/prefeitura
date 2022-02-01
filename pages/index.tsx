@@ -77,7 +77,7 @@ const Home: NextPage = () => {
           />
         </div>
 
-        <div className="row mx-auto">
+        <div className="row mx-auto btnCarregarMais">
           <Button variant="primary">Caregar mais</Button>
         </div>
 
@@ -91,55 +91,59 @@ const Home: NextPage = () => {
           <TitulosSecoes>Manacapuru Atende</TitulosSecoes>
         </div>
         <div className="row ">
-          <ul className="ulLinhaAtende">
-            <ItemAtende
-              descricao="Imposto Predial e Territorial Urbano"
-              nome="IPTU"
-              url="#"
-              cor="#2B56A5"
-            />
+          <div className="col-md-6 col-xs-12 no-gutter">
+            <ul className="ulLinhaAtende">
+              <ItemAtende
+                descricao="Imposto Predial e Territorial Urbano"
+                nome="IPTU"
+                url="#"
+                cor="#2B56A5"
+              />
 
-            <ItemAtende
-              descricao="Imposto Predial e Territorial Urbano"
-              nome="IPTU"
-              url="#"
-              cor="#0B9ADE"
-            />
+              <ItemAtende
+                descricao="Imposto Predial e Territorial Urbano"
+                nome="IPTU"
+                url="#"
+                cor="#0B9ADE"
+              />
 
-            <ItemAtende
-              descricao="Imposto Predial e Territorial Urbano"
-              nome="IPTU"
-              url="#"
-              cor="#FFBC00"
-            />
+              <ItemAtende
+                descricao="Imposto Predial e Territorial Urbano"
+                nome="IPTU"
+                url="#"
+                cor="#FFBC00"
+              />
 
-            <ItemAtende
-              descricao="Imposto Predial e Territorial Urbano"
-              nome="IPTU"
-              url="#"
-              cor="#2BB254"
-            />
+              <ItemAtende
+                descricao="Imposto Predial e Territorial Urbano"
+                nome="IPTU"
+                url="#"
+                cor="#2BB254"
+              />
 
-            <ItemAtende
-              descricao="Imposto Predial e Territorial Urbano"
-              nome="IPTU"
-              url="#"
-              cor="#FF7110"
-            />
-            <ItemAtende
-              descricao="Imposto Predial e Territorial Urbano"
-              nome="IPTU"
-              url="#"
-              cor="#007943"
-            />
+              <ItemAtende
+                descricao="Imposto Predial e Territorial Urbano"
+                nome="IPTU"
+                url="#"
+                cor="#FF7110"
+              />
+              <ItemAtende
+                descricao="Imposto Predial e Territorial Urbano"
+                nome="IPTU"
+                url="#"
+                cor="#007943"
+              />
 
-            <ItemAtende
-              descricao="Imposto Predial e Territorial Urbano"
-              nome="IPTU"
-              url="#"
-              cor="#0B9ADE"
-            />
-          </ul>
+              <ItemAtende
+                descricao="Imposto Predial e Territorial Urbano"
+                nome="IPTU"
+                url="#"
+                cor="#0B9ADE"
+              />
+            </ul>
+          </div>
+
+          <div className="col-md-6 col-xs-12"></div>
         </div>
       </div>
 

@@ -36,7 +36,13 @@
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
+    padding: 0;
 }
 .contentAtende {
     margin-top: 26px;
+}
+.btnCarregarMais {
+    button {
+        width: 150px;
+    }
 }
