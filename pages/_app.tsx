@@ -1,13 +1,14 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 import type { AppProps } from 'next/app'
-import { config } from '@fortawesome/fontawesome-svg-core'
-import '@fortawesome/fontawesome-svg-core/styles.css'
-import "../styles/styles.scss"
-config.autoAddCss = false
-
+import '../styles/styles.scss'
+import Head from 'next/head'
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return (
+    <>
+      <Component {...pageProps} />
+    </>
+  )
 }
 
 export default MyApp
