@@ -9,6 +9,9 @@ const nextConfig = {
   images: {
     domains: ['www.manaus.am.gov.br', 'localhost'],
   },
+  env : {
+    url: process.env.NEXT_PUBLIC_HOST
+  }
 }
 
 module.exports = nextConfig

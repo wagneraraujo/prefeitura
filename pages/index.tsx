@@ -1,10 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
 import { Tabs, Tab } from 'react-bootstrap'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Button from 'react-bootstrap/Button'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 import { LinhaTop } from '../components/LinhaTop'
 import { colors } from '../styles/colors'
 import Header from '../components/header'
@@ -16,21 +13,15 @@ import { CarrouselImagens } from '../components/CarrouselImagens'
 import { ItemAtende } from '../components/ItemAtende'
 import { Footer } from '../components/Footer'
 import { ItemButton } from '../components/ItemButton'
-const Home: NextPage = () => {
+import { loadNoticias } from '../graphql/loadnoticias'
+const Home = ({ noticias }) => {
   const [isLoading, setLoading] = useState(false)
   function simulateNetworkRequest() {
     return new Promise((resolve) => setTimeout(resolve, 2000))
   }
-  useEffect(() => {
-    if (isLoading) {
-      simulateNetworkRequest().then(() => {
-        setLoading(false)
-      })
-    }
-  }, [isLoading])
 
   const handleClick = () => setLoading(true)
-
+  console.log(noticias)
   return (
     <>
       <Head>
@@ -53,30 +44,19 @@ const Home: NextPage = () => {
           <TitulosSecoes>últimas Noticias</TitulosSecoes>
         </div>
         <div className="row">
-          <ItemNoticia
-            key={1}
-            categoria="Saúde"
-            titulo="Justiça mantém liminar e condena Amazonas Energia por cobrança e retenção indevida da Cosip"
-            imagem="/n1.jpg"
-          />
-          <ItemNoticia
-            key={2}
-            categoria="Saúde"
-            titulo="Justiça mantém liminar e condena Amazonas Energia por cobrança e retenção indevida da Cosip"
-            imagem="/n1.jpg"
-          />
-          <ItemNoticia
-            key={3}
-            categoria="Saúde"
-            titulo="Justiça mantém liminar e condena Amazonas Energia por cobrança e retenção indevida da Cosip"
-            imagem="/n1.jpg"
-          />
-          <ItemNoticia
-            key={4}
-            categoria="Saúde"
-            titulo="Justiça mantém liminar e condena Amazonas Energia por cobrança e retenção indevida da Cosip"
-            imagem="/n1.jpg"
-          />
+          {noticias.data.map((item: any) => {
+            return (
+              <ItemNoticia
+                key={item.id}
+                categoria={item.attributes.categorias.data[0].attributes.Nome}
+                titulo={item.attributes.Titulo}
+                resumo={item.attributes.Resumo}
+                imagem={
+                  process.env.url + item.attributes.Capa.data.attributes.url
+                }
+              />
+            )
+          })}
         </div>
 
         <div className="row mx-auto btnCarregarMais">
@@ -194,3 +174,15 @@ const Home: NextPage = () => {
 }
 
 export default Home
+
+export async function getServerSideProps() {
+  console.log(process.env.url)
+  const noticiaRes = await fetch(`${process.env.url}/api/noticias?populate=*`)
+  const noticias = await noticiaRes.json()
+
+  return {
+    props: {
+      noticias,
+    },
+  }
+}
