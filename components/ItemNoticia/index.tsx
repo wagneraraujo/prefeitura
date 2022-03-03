@@ -7,6 +7,7 @@ export interface noticiaProps {
   imagem: string
   dataHora?: String
   resumo?: string
+  slug: string
 }
 
 export const ItemNoticia = ({
@@ -15,10 +16,11 @@ export const ItemNoticia = ({
   imagem,
   dataHora,
   resumo,
+  slug,
 }: noticiaProps) => {
   return (
     <div className="col-xs-12 col-sm-8 col-md-8">
-      <Link href="/">
+      <Link href="/noticia/[slug]" as={`/noticia/${slug}`}>
         <a className="itemNoticia">
           <div className="tituloNoticia tituloDescricaoOrder order-sm-1">
             <div className="dataNoticia">{dataHora}</div>

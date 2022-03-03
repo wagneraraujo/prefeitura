@@ -1,26 +1,34 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import Image from 'next/image'
 import { Tabs, Tab } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button'
-import { LinhaTop } from '../components/LinhaTop'
-import { colors } from '../styles/colors'
-import Header from '../components/header'
-import { ContentCarrousel } from '../components/ContentCarrousel'
-import { ItemNoticia } from '../components/ItemNoticia'
-import { TitulosSecoes } from '../components/TitulosSecoes'
+import { LinhaTop } from '../../components/LinhaTop'
+import { colors } from '../../styles/colors'
+import Header from '../../components/header'
+import { ContentCarrousel } from '../../components/ContentCarrousel'
+import { ItemNoticia } from '../../components/ItemNoticia'
+import { TitulosSecoes } from '../../components/TitulosSecoes'
 import { useEffect, useState } from 'react'
-import { CarrouselImagens } from '../components/CarrouselImagens'
-import { ItemAtende } from '../components/ItemAtende'
-import { Footer } from '../components/Footer'
-import { ItemButton } from '../components/ItemButton'
-import { loadNoticias } from '../graphql/loadnoticias'
-const Home = ({ noticias }: any) => {
+import { CarrouselImagens } from '../../components/CarrouselImagens'
+import { ItemAtende } from '../../components/ItemAtende'
+import { Footer } from '../../components/Footer'
+import { ItemButton } from '../../components/ItemButton'
+import { loadNoticias } from '../../graphql/loadnoticias'
+
+{
+  /* <div dangerouslySetInnerHTML={{ __html:noticia.corpo}} /> */
+}
+
+const Noticia = ({ noticia }: any) => {
   const [isLoading, setLoading] = useState(false)
   function simulateNetworkRequest() {
     return new Promise((resolve) => setTimeout(resolve, 2000))
   }
 
   const handleClick = () => setLoading(true)
+
+  console.log(noticia)
   return (
     <>
       <Head>
@@ -29,30 +37,44 @@ const Home = ({ noticias }: any) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <ContentCarrousel />
       <div className="container noticiasSecao">
-        <div className="row">
-          <TitulosSecoes>últimas Noticias</TitulosSecoes>
+        <div className="row subHeaderSingle">
+          <h1 className="titleSingle">{noticia.data[0].attributes.Titulo}</h1>
+          <p>{noticia.data[0].attributes.Resumo}</p>
+          <div className="dataInfo">
+            <div className="coll">
+              <strong>Data:</strong>
+              {new Date(noticia.data[0].attributes.createdAt).toLocaleString(
+                'pt-BR',
+              )}{' '}
+              <br />
+              {/* escrito por: */}
+              {/* <strong>
+                {' '}
+                {noticia.data[0].attributes.autor.data[0].attributes.Nome}
+              </strong> */}
+            </div>
+          </div>
         </div>
-        <div className="row">
-          {noticias.data.map((item: any) => {
-            return (
-              <ItemNoticia
-                key={item.id}
-                categoria={item.attributes.categorias.data[0].attributes.Nome}
-                titulo={item.attributes.Titulo}
-                resumo={item.attributes.Resumo}
-                slug={item.attributes.slug}
-                imagem={
-                  process.env.url + item.attributes.Capa.data.attributes.url
-                }
-              />
-            )
-          })}
+        <div className="row rowStyleG1 mx-auto">
+          {/* <Image
+            src={
+              process.env.url +
+              noticia.data[0].attributes.Capa.data.attributes.url
+            }
+            quality={100}
+            objectFit="cover"
+            width="1160"
+            height="600"
+            alt={noticia.data.attributes.Titulo}
+          /> */}
         </div>
-
-        <div className="row mx-auto btnCarregarMais">
-          <Button variant="primary">Caregar mais</Button>
+        <div className="row rowStyleG1">
+          <div
+            dangerouslySetInnerHTML={{
+              __html: noticia.data[0].attributes.Conteudo,
+            }}
+          />
         </div>
 
         <div className="row linhabanners">
@@ -165,15 +187,19 @@ const Home = ({ noticias }: any) => {
   )
 }
 
-export default Home
-
-export async function getServerSideProps() {
-  const noticiaRes = await fetch(`${process.env.url}/api/noticias?populate=*`)
-  const noticias = await noticiaRes.json()
+export async function getServerSideProps(context: any) {
+  const { slug } = context.query
+  // console.log('contenxto:', context.slug)
+  const noticiaRes = await fetch(
+    `${process.env.url}/api/noticias?populate=*?filters[slug]=${slug}`,
+  )
+  const noticia = await noticiaRes.json()
 
   return {
     props: {
-      noticias,
+      noticia,
     },
   }
 }
+
+export default Noticia

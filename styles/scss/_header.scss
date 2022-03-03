@@ -271,3 +271,7 @@
 .ColBusca {
     display: flex;
 }
+.activeLink {
+    color: $verde !important;
+    font-weight: bold;
+}
