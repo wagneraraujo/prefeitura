@@ -4,9 +4,12 @@ import type { AppProps } from 'next/app'
 import '../styles/styles.scss'
 import Head from 'next/head'
 import Header from '../components/header'
+import { DefaultSeo } from 'next-seo'
+import SEO from '../next-seo'
 function MyApp({ Component, pageProps, navigation }: any) {
   return (
     <>
+      <DefaultSeo {...SEO} />
       <Header navigation={navigation} />
       <Component {...pageProps} />
     </>
