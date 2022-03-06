@@ -1,6 +1,6 @@
 import CarrouselNoticias from '../CarrouselNoticias'
 import { ItemNoticia } from '../ItemNoticia'
-export const ContentCarrousel = () => {
+export const ContentCarrousel = ({ noticia }: any) => {
   return (
     <div>
       <div className="container">
@@ -9,7 +9,7 @@ export const ContentCarrousel = () => {
         </div>
         <div className="row">
           <div className="col-md-7 col-xs-12 col-lg-7 no-gutter">
-            <CarrouselNoticias />
+            <CarrouselNoticias noticias={noticia} />
           </div>
 
           <div className="col-md-5 col-xs-12 col-lg-5 colNoticiaWideCarrousel">
@@ -18,24 +18,7 @@ export const ContentCarrousel = () => {
               categoria="Saúde"
               titulo="Justiça mantém liminar e condena Amazonas Energia por cobrança e retenção indevida da Cosip"
               imagem="/n1.jpg"
-            />
-            <ItemNoticia
-              key={1}
-              categoria="Saúde"
-              titulo="Justiça mantém liminar e condena Amazonas Energia por cobrança e retenção indevida da Cosip"
-              imagem="/n1.jpg"
-            />
-            <ItemNoticia
-              key={1}
-              categoria="Saúde"
-              titulo="Justiça mantém liminar e condena Amazonas Energia por cobrança e retenção indevida da Cosip"
-              imagem="/n1.jpg"
-            />
-            <ItemNoticia
-              key={1}
-              categoria="Saúde"
-              titulo="Justiça mantém liminar e condena Amazonas Energia por cobrança e retenção indevida da Cosip"
-              imagem="/n1.jpg"
+              slug="teste"
             />
           </div>
         </div>

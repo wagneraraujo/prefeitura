@@ -9,7 +9,7 @@ import { LinhaTop } from '../LinhaTop'
 import { colors } from '../../styles/colors'
 import { useRouter } from 'next/router'
 
-export default function Header({ navigation }: any) {
+export default function Header({ navigation, categorias }: any) {
   const [mostrarBusca, setMostrarBusca] = useState<boolean>(false)
   const handleToggleMenu = () => {
     setMostrarBusca(true)
@@ -19,6 +19,7 @@ export default function Header({ navigation }: any) {
   }
 
   const router = useRouter()
+  console.log(categorias)
 
   return (
     <>
@@ -82,12 +83,23 @@ export default function Header({ navigation }: any) {
           <div className="container">
             <ul>
               <li>Categorias</li>
-              <li>
-                <Link href="/">
-                  <a>Saúde</a>
-                </Link>
-              </li>
-              <li>
+              {categorias.data.map((item: any) => {
+                const newMenuItem = '/' + item.attributes.slug
+                return (
+                  <li key={item.id}>
+                    <Link href={`${item.attributes.slug}`}>
+                      <a
+                        className={
+                          router.pathname === newMenuItem ? 'activeLink' : ''
+                        }
+                      >
+                        {item.attributes.Nome}
+                      </a>
+                    </Link>
+                  </li>
+                )
+              })}
+              {/* <li>
                 <Link href="/">
                   <a>Transporte</a>
                 </Link>
@@ -102,7 +114,7 @@ export default function Header({ navigation }: any) {
                 <Link href="/">
                   <a>Comércio</a>
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>

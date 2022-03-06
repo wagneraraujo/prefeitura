@@ -31,7 +31,7 @@ const Home = ({ noticias, page }: any) => {
         title="Prefeitura Municipal de Manacapuru"
         description="Vivendo uma linda história"
       />
-      <ContentCarrousel />
+      <ContentCarrousel noticia={noticias} />
       <div className="container noticiasSecao">
         <div className="row">
           <TitulosSecoes>últimas Noticias</TitulosSecoes>

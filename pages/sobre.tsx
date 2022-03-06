@@ -30,30 +30,11 @@ const Home = ({ noticias }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <ContentCarrousel />
       <div className="container noticiasSecao">
         <div className="row">
-          <TitulosSecoes>últimas Noticias</TitulosSecoes>
+          <TitulosSecoes>Sobre</TitulosSecoes>
         </div>
-        <div className="row">
-          {noticias.data.map((item: any) => {
-            return (
-              <ItemNoticia
-                key={item.id}
-                categoria={item.attributes.categorias.data[0].attributes.Nome}
-                titulo={item.attributes.Titulo}
-                resumo={item.attributes.Resumo}
-                imagem={
-                  process.env.url + item.attributes.Capa.data.attributes.url
-                }
-              />
-            )
-          })}
-        </div>
-
-        <div className="row mx-auto btnCarregarMais">
-          <Button variant="primary">Caregar mais</Button>
-        </div>
+        <div className="row">sobre</div>
 
         <div className="row linhabanners">
           <CarrouselImagens />

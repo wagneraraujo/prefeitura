@@ -7,6 +7,7 @@
     align-items: center;
     a {
         color: #fff;
+        text-transform: capitalize;
         text-decoration: none;
         &:hover {
             color: $amarelo;
@@ -21,7 +22,7 @@
 
         li {
             position: relative;
-            top: 8px;
+            top: 0px;
             margin: 0 6px;
 
             i {
@@ -159,16 +160,16 @@
 .linhaCategorias {
     display: flex;
     width: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
     background-color: $azul;
     align-items: center;
     padding: 8px 0px;
-    height: 50px;
+    height: 40px;
     justify-content: center;
 
     @include for-tablet-landscape-up {
         padding: 8px 0px;
-        height: 60px;
+        height: 50px;
     }
     ul {
         padding: 0;
@@ -178,7 +179,7 @@
         word-break: keep-all;
         width: 100%;
         position: relative;
-        top: 6px;
+        top: 0px;
         li {
             margin: 0 2px;
             word-wrap: normal;
@@ -191,6 +192,7 @@
                 font-size: 12px;
                 padding: 0 4px;
                 word-wrap: normal;
+                text-transform: capitalize;
 
                 &:hover,
                 &:active {
@@ -260,6 +262,7 @@
         a {
             text-decoration: none;
             color: #191919;
+            text-transform: capitalize;
 
             &:hover {
                 color: $amarelo;
