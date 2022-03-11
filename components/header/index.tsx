@@ -6,7 +6,6 @@ import Link from 'next/link'
 import { FaSearch } from 'react-icons/fa'
 import { InputBuscar } from '../InputBuscar'
 import { LinhaTop } from '../LinhaTop'
-import { colors } from '../../styles/colors'
 import { useRouter } from 'next/router'
 
 export default function Header({ navigation, categorias }: any) {
@@ -19,12 +18,11 @@ export default function Header({ navigation, categorias }: any) {
   }
 
   const router = useRouter()
-  console.log(categorias)
 
   return (
     <>
       <LinhaTop
-        color={colors.azul}
+        color="#2B56A5"
         linkFacebook="#"
         linkInstagram="#"
         linkTitle="#"

@@ -189,7 +189,6 @@ const Noticia = ({ noticia }: any) => {
 
 export async function getServerSideProps(context: any) {
   const { slug } = context.query
-  // console.log('contenxto:', context.slug)
   const noticiaRes = await fetch(
     `${process.env.url}/api/noticias?filters[slug]=${slug}&populate=*`,
   )

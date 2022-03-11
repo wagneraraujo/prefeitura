@@ -21,30 +21,21 @@ const responsive = {
     items: 2,
   },
 }
-const Banners = [
-  {
-    id: 0,
-    img: '/public/banner1.png',
-  },
-  {
-    id: 1,
-    img: '/public/banner1.png',
-  },
-  {
-    id: 3,
-    img: '/public/banner1.png',
-  },
-]
 
-export const CarrouselImagens = () => {
+export const CarrouselImagens = ({ banners }: any) => {
   return (
     <Carousel responsive={responsive}>
-      <ItemCarrousel />
-      <ItemCarrousel />
-      <ItemCarrousel />
-      <ItemCarrousel />
-      <ItemCarrousel />
-      <ItemCarrousel />
+      {banners.data.map((item: JSX.Element | any) => {
+        return (
+          <ItemCarrousel
+            key={item.id}
+            url={item.attributes.url_completa}
+            imagem={
+              process.env.url + item.attributes.Banner.data.attributes.url
+            }
+          />
+        )
+      })}
     </Carousel>
   )
 }

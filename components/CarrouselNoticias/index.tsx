@@ -9,7 +9,6 @@ export default function CarrouselNoticias({ noticias, slug }: any) {
     setIndex(selectedIndex)
   }
 
-  console.log(noticias)
   return (
     <Carousel activeIndex={index} onSelect={handleSelect}>
       {noticias.data.map((item: any) => {

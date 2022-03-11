@@ -4,7 +4,7 @@ interface AtendeProps {
   nome: string
   descricao: string
   url: string
-  cor: string
+  cor: any
 }
 
 export const ItemAtende = ({ nome, descricao, url, cor }: AtendeProps) => {

@@ -14,14 +14,13 @@ import { ItemAtende } from '../components/ItemAtende'
 import { Footer } from '../components/Footer'
 import { ItemButton } from '../components/ItemButton'
 import { loadNoticias } from '../graphql/loadnoticias'
-const Home = ({ noticias }) => {
+const Home = () => {
   const [isLoading, setLoading] = useState(false)
   function simulateNetworkRequest() {
     return new Promise((resolve) => setTimeout(resolve, 2000))
   }
 
   const handleClick = () => setLoading(true)
-  console.log(noticias)
   return (
     <>
       <Head>
@@ -149,7 +148,6 @@ const Home = ({ noticias }) => {
 export default Home
 
 export async function getServerSideProps() {
-  console.log(process.env.url)
   const noticiaRes = await fetch(`${process.env.url}/api/noticias?populate=*`)
   const noticias = await noticiaRes.json()
 
