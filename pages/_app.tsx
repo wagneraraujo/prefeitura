@@ -12,14 +12,23 @@ import { Tab, Tabs } from 'react-bootstrap'
 import { ItemButton } from '../components/ItemButton'
 import { Footer } from '../components/Footer'
 import { colorsItens } from '../styles/colors'
-function MyApp({ Component, pageProps, navigation, categorias, atende }: any) {
+import { TabSite } from '../components/TabsSite'
+function MyApp({
+  Component,
+  pageProps,
+  navigation,
+  categorias,
+  atende,
+  abas,
+  categoriaAbas,
+}: any) {
   return (
     <>
       <DefaultSeo {...SEO} />
       <Header navigation={navigation} categorias={categorias} />
       <Component {...pageProps} />
 
-      <div className="azulBackground">
+      <div className="azulBackground" {...abas}>
         <div className="container contentAtende">
           <div className="row">
             <TitulosSecoes color="#fff">Manacapuru Atende</TitulosSecoes>
@@ -27,9 +36,8 @@ function MyApp({ Component, pageProps, navigation, categorias, atende }: any) {
           <div className="row ">
             <div className="col-md-6 col-xs-12 no-gutter">
               <ul className="ulLinhaAtende">
-                {atende.data.map((item: any, index) => {
+                {atende.data.map((item: any, index: number) => {
                   const cors = colorsItens.sort(() => Math.random())
-                  console.log(cors)
                   return (
                     <ItemAtende
                       key={item.id}
@@ -43,44 +51,7 @@ function MyApp({ Component, pageProps, navigation, categorias, atende }: any) {
               </ul>
             </div>
 
-            <div className="col-md-6 col-xs-12 colItensLink">
-              <Tabs
-                defaultActiveKey="profile"
-                id="uncontrolled-tab-example"
-                className="mb-3"
-              >
-                <Tab eventKey="home" title="Cidadão">
-                  <div className="contentLinks">
-                    <ItemButton iconName="heartbeat" title="Saúde" link="#" />
-                    <ItemButton iconName="heartbeat" title="Saúde" link="#" />
-                    <ItemButton iconName="heartbeat" title="Saúde" link="#" />
-                    <ItemButton iconName="heartbeat" title="Saúde" link="#" />
-                    <ItemButton iconName="heartbeat" title="Saúde" link="#" />
-                    <ItemButton iconName="heartbeat" title="Saúde" link="#" />
-                    <ItemButton iconName="heartbeat" title="Saúde" link="#" />
-                    <ItemButton iconName="heartbeat" title="Saúde" link="#" />
-                  </div>
-                </Tab>
-                <Tab eventKey="empresa" title="Empresas">
-                  <div className="contentLinks">
-                    <ItemButton iconName="heartbeat" title="Saúde" link="#" />
-                  </div>
-                </Tab>
-                <Tab eventKey="turista" title="Turista">
-                  <div className="contentLinks">
-                    <ItemButton iconName="heartbeat" title="Saúde" link="#" />
-                    <ItemButton iconName="heartbeat" title="Saúde" link="#" />
-                    <ItemButton iconName="heartbeat" title="Saúde" link="#" />
-                  </div>
-                </Tab>
-                <Tab eventKey="servidor" title="Servidor">
-                  <div className="contentLinks">
-                    <ItemButton iconName="heartbeat" title="Saúde" link="#" />
-                    <ItemButton iconName="heartbeat" title="Saúde" link="#" />
-                  </div>
-                </Tab>
-              </Tabs>
-            </div>
+            <TabSite tabs={abas} categorias={categoriaAbas} />
           </div>
         </div>
       </div>
@@ -100,9 +71,18 @@ MyApp.getInitialProps = async () => {
   const resAtende = await fetch(
     `${process.env.NEXT_PUBLIC_HOST}/api/atendimentos`,
   )
+  const resAbas = await fetch(
+    `${process.env.NEXT_PUBLIC_HOST}/api/abas?populate=*`,
+  )
+  const resCategoriasAbas = await fetch(
+    `${process.env.NEXT_PUBLIC_HOST}/api/categoria-abas?populate=*`,
+  )
+
   const navigation = await res.json()
   const categorias = await resCategorias.json()
   const atende = await resAtende.json()
+  const abas = await resAbas.json()
+  const categoriaAbas = await resCategoriasAbas.json()
 
-  return { navigation, categorias, atende }
+  return { navigation, categorias, atende, abas, categoriaAbas }
 }

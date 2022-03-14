@@ -3,7 +3,6 @@ import Head from 'next/head'
 import { Tabs, Tab, Pagination } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button'
 import { LinhaTop } from '../components/LinhaTop'
-import { colors } from '../styles/colors'
 import Header from '../components/header'
 import { ContentCarrousel } from '../components/ContentCarrousel'
 import { ItemNoticia } from '../components/ItemNoticia'
@@ -25,7 +24,6 @@ const Home = ({ noticias, page, banners }: any) => {
 
   const handleClick = () => setLoading(true)
   const router = useRouter()
-
   return (
     <>
       <NextSeo
