@@ -82,9 +82,9 @@ export async function getServerSideProps({ page = 1 }) {
     `${process.env.url}/api/noticias?pagination[page]=1&pagination[pageSize]=2&_start=3&populate=*`,
   )
   const bannerRes = await fetch(`${process.env.url}/api/banners?populate=*`)
+  const banners = await bannerRes.json()
 
   const noticias = await noticiaRes.json()
-  const banners = await bannerRes.json()
 
   return {
     props: {
