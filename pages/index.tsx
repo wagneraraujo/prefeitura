@@ -30,10 +30,10 @@ const Home = ({ noticias, page, banners }: any) => {
         title="Prefeitura Municipal de Manacapuru"
         description="Vivendo uma linda história"
       />
-      <ContentCarrousel noticia={noticias} />
+      <ContentCarrousel noticias={noticias} />
       <div className="container noticiasSecao">
         <div className="row">
-          <TitulosSecoes>últimas Noticias</TitulosSecoes>
+          <TitulosSecoes>Últimas Noticias</TitulosSecoes>
         </div>
         <div className="row">
           {noticias.data.map((item: any) => {
@@ -77,19 +77,17 @@ const Home = ({ noticias, page, banners }: any) => {
 
 export default Home
 
-export async function getServerSideProps({ page = 1 }) {
+export async function getServerSideProps() {
   const noticiaRes = await fetch(
-    `${process.env.url}/api/noticias?pagination[page]=1&pagination[pageSize]=2&_start=3&populate=*`,
+    `${process.env.url}/api/noticias?pagination[page]=1&pagination[pageSize]=10&_start=3&populate=*`,
   )
   const bannerRes = await fetch(`${process.env.url}/api/banners?populate=*`)
   const banners = await bannerRes.json()
-
   const noticias = await noticiaRes.json()
 
   return {
     props: {
       noticias,
-      page: +page,
       banners,
     },
   }
