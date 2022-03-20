@@ -11,7 +11,7 @@ export default function CarrouselNoticias({ noticias }: any) {
     setIndex(selectedIndex)
   }
 
-  console.log('carrousel noticias', noticias)
+  // console.log('carrousel noticias', noticias)
 
   return (
     <>

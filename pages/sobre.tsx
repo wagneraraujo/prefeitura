@@ -13,7 +13,7 @@ import { ItemAtende } from '../components/ItemAtende'
 import { Footer } from '../components/Footer'
 import { ItemButton } from '../components/ItemButton'
 import { loadNoticias } from '../graphql/loadnoticias'
-const Home = () => {
+const SobrePage = () => {
   const [isLoading, setLoading] = useState(false)
   function simulateNetworkRequest() {
     return new Promise((resolve) => setTimeout(resolve, 2000))
@@ -34,117 +34,13 @@ const Home = () => {
         </div>
         <div className="row">sobre</div>
 
-        <div className="row linhabanners">
-          <CarrouselImagens />
-        </div>
+        <div className="row linhabanners"></div>
       </div>
-
-      <div className="azulBackground">
-        <div className="container contentAtende">
-          <div className="row">
-            <TitulosSecoes color="#fff">Manacapuru Atende</TitulosSecoes>
-          </div>
-          <div className="row ">
-            <div className="col-md-6 col-xs-12 no-gutter">
-              <ul className="ulLinhaAtende">
-                <ItemAtende
-                  descricao="Imposto Predial e Territorial Urbano"
-                  nome="IPTU"
-                  url="#"
-                  cor="#2B56A5"
-                />
-
-                <ItemAtende
-                  descricao="Imposto Predial e Territorial Urbano"
-                  nome="IPTU"
-                  url="#"
-                  cor="#0B9ADE"
-                />
-
-                <ItemAtende
-                  descricao="Imposto Predial e Territorial Urbano"
-                  nome="IPTU"
-                  url="#"
-                  cor="#FFBC00"
-                />
-
-                <ItemAtende
-                  descricao="Imposto Predial e Territorial Urbano"
-                  nome="IPTU"
-                  url="#"
-                  cor="#2BB254"
-                />
-
-                <ItemAtende
-                  descricao="Imposto Predial e Territorial Urbano"
-                  nome="IPTU"
-                  url="#"
-                  cor="#FF7110"
-                />
-                <ItemAtende
-                  descricao="Imposto Predial e Territorial Urbano"
-                  nome="IPTU"
-                  url="#"
-                  cor="#007943"
-                />
-
-                <ItemAtende
-                  descricao="Imposto Predial e Territorial Urbano"
-                  nome="IPTU"
-                  url="#"
-                  cor="#0B9ADE"
-                />
-              </ul>
-            </div>
-
-            <div className="col-md-6 col-xs-12 colItensLink">
-              <Tabs
-                defaultActiveKey="profile"
-                id="uncontrolled-tab-example"
-                className="mb-3"
-              >
-                <Tab eventKey="home" title="Cidadão">
-                  <div className="contentLinks">
-                    <ItemButton iconName="heartbeat" title="Saúde" link="#" />
-                    <ItemButton iconName="heartbeat" title="Saúde" link="#" />
-                    <ItemButton iconName="heartbeat" title="Saúde" link="#" />
-                    <ItemButton iconName="heartbeat" title="Saúde" link="#" />
-                    <ItemButton iconName="heartbeat" title="Saúde" link="#" />
-                    <ItemButton iconName="heartbeat" title="Saúde" link="#" />
-                    <ItemButton iconName="heartbeat" title="Saúde" link="#" />
-                    <ItemButton iconName="heartbeat" title="Saúde" link="#" />
-                  </div>
-                </Tab>
-                <Tab eventKey="empresa" title="Empresas">
-                  <div className="contentLinks">
-                    <ItemButton iconName="heartbeat" title="Saúde" link="#" />
-                  </div>
-                </Tab>
-                <Tab eventKey="turista" title="Turista">
-                  <div className="contentLinks">
-                    <ItemButton iconName="heartbeat" title="Saúde" link="#" />
-                    <ItemButton iconName="heartbeat" title="Saúde" link="#" />
-                    <ItemButton iconName="heartbeat" title="Saúde" link="#" />
-                  </div>
-                </Tab>
-                <Tab eventKey="servidor" title="Servidor">
-                  <div className="contentLinks">
-                    <ItemButton iconName="heartbeat" title="Saúde" link="#" />
-                    <ItemButton iconName="heartbeat" title="Saúde" link="#" />
-                  </div>
-                </Tab>
-              </Tabs>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <Footer />
     </>
   )
 }
 
-export default Home
+export default SobrePage
 
 export async function getServerSideProps() {
   const noticiaRes = await fetch(`${process.env.url}/api/noticias?populate=*`)

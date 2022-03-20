@@ -16,12 +16,13 @@ import { loadNoticias } from '../graphql/loadnoticias'
 import { useRouter } from 'next/router'
 import { NextSeo } from 'next-seo'
 
-const Home = ({ noticias, page, banners }: any) => {
+const Home = ({ noticias, page, banners, feedNoticias }: any) => {
   const [isLoading, setLoading] = useState(false)
   function simulateNetworkRequest() {
     return new Promise((resolve) => setTimeout(resolve, 2000))
   }
 
+  console.log('carrousel:', feedNoticias)
   const handleClick = () => setLoading(true)
   const router = useRouter()
   return (
@@ -33,10 +34,10 @@ const Home = ({ noticias, page, banners }: any) => {
       <ContentCarrousel noticias={noticias} />
       <div className="container noticiasSecao">
         <div className="row">
-          <TitulosSecoes>Últimas Noticias</TitulosSecoes>
+          <TitulosSecoes>Mais Noticias</TitulosSecoes>
         </div>
         <div className="row">
-          {noticias.data.map((item: any) => {
+          {feedNoticias.data.map((item: any) => {
             return (
               <ItemNoticia
                 key={item.id}
@@ -79,16 +80,23 @@ export default Home
 
 export async function getServerSideProps() {
   const noticiaRes = await fetch(
-    `${process.env.url}/api/noticias?pagination[page]=1&pagination[pageSize]=10&_start=3&populate=*`,
+    `${process.env.url}/api/noticias?pagination[page]=1&pagination[pageSize]=5&populate=*`,
   )
+
+  const feedNoticiasRes = await fetch(
+    `${process.env.url}/api/noticias?pagination[start]=5&pagination[limit]=10&populate=*`,
+  )
+
   const bannerRes = await fetch(`${process.env.url}/api/banners?populate=*`)
   const banners = await bannerRes.json()
   const noticias = await noticiaRes.json()
+  const feedNoticias = await feedNoticiasRes.json()
 
   return {
     props: {
       noticias,
       banners,
+      feedNoticias,
     },
   }
 }
