@@ -2,9 +2,7 @@
 
 import { DetailedHTMLProps, HTMLAttributes, DOMAttributes } from 'react'
 import { ItemButton } from '../ItemButton'
-import { ItemAtende } from '../../components/ItemAtende'
-import { Footer } from '../../components/Footer'
-import { loadNoticias } from '../../graphql/loadnoticias'
+
 import { Tab, Tabs, TabProps, Col, TabsProps } from 'react-bootstrap'
 import { DivProps } from 'react-html-props'
 type T = {
@@ -24,6 +22,7 @@ interface IntrinsicElements {
 }
 
 export const TabSite = ({ tabs, categorias }: any) => {
+  console.log(tabs)
   return (
     <>
       <div
@@ -44,8 +43,8 @@ export const TabSite = ({ tabs, categorias }: any) => {
                 title={item.attributes.Nome}
                 key={i}
               >
-                <div className="contentLinks">
-                  {item.attributes.item_abas.data.map(
+                {/* <div className="contentLinks">
+                  {item.attributes.item_abas.map(
                     (itemCategoria: any, indexCategoria: number) => {
                       return (
                         <ItemButton
@@ -57,7 +56,7 @@ export const TabSite = ({ tabs, categorias }: any) => {
                       )
                     },
                   )}
-                </div>
+                </div> */}
               </Tab>
             )
           })}

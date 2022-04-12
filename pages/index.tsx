@@ -22,7 +22,7 @@ const Home = ({ noticias, page, banners, feedNoticias }: any) => {
     return new Promise((resolve) => setTimeout(resolve, 2000))
   }
 
-  console.log('carrousel:', feedNoticias)
+  console.log('carrousel:', banners)
   const handleClick = () => setLoading(true)
   const router = useRouter()
   return (
@@ -37,7 +37,7 @@ const Home = ({ noticias, page, banners, feedNoticias }: any) => {
           <TitulosSecoes>Mais Noticias</TitulosSecoes>
         </div>
         <div className="row">
-          {feedNoticias.data.map((item: any) => {
+          {feedNoticias.data?.map((item: any) => {
             return (
               <ItemNoticia
                 key={item.id}

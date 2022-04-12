@@ -23,15 +23,17 @@ const responsive = {
 }
 
 export const CarrouselImagens = ({ banners }: any) => {
+  console.log('banners=>', banners)
   return (
     <Carousel responsive={responsive}>
       {banners.data.map((item: JSX.Element | any) => {
+        console.log(item.attributes.Imagem.data[0].attributes.url)
         return (
           <ItemCarrousel
             key={item.id}
             url={item.attributes.url_completa}
             imagem={
-              process.env.url + item.attributes.Banner.data.attributes.url
+              process.env.url + item.attributes.Imagem.data[0].attributes.url
             }
           />
         )

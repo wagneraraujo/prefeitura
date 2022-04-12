@@ -13,6 +13,7 @@ import { ItemButton } from '../components/ItemButton'
 import { Footer } from '../components/Footer'
 import { colorsItens } from '../styles/colors'
 import { TabSite } from '../components/TabsSite'
+import { Loading } from '../components/Loading'
 function MyApp({
   Component,
   pageProps,
@@ -22,8 +23,10 @@ function MyApp({
   abas,
   categoriaAbas,
 }: any) {
+  console.log(atende)
   return (
     <>
+      {atende.data === null ? <Loading /> : ''}
       <DefaultSeo {...SEO} />
       <Header navigation={navigation} categorias={categorias} />
       <Component {...pageProps} />
@@ -36,7 +39,7 @@ function MyApp({
           <div className="row ">
             <div className="col-md-6 col-xs-12 no-gutter">
               <ul className="ulLinhaAtende">
-                {atende.data.map((item: any, index: number) => {
+                {atende.data?.map((item: any, index: number) => {
                   const cors = colorsItens.sort(() => Math.random())
                   return (
                     <ItemAtende
@@ -72,7 +75,7 @@ MyApp.getInitialProps = async () => {
     `${process.env.NEXT_PUBLIC_HOST}/api/atendimentos`,
   )
   const resAbas = await fetch(
-    `${process.env.NEXT_PUBLIC_HOST}/api/abas?populate=*`,
+    `${process.env.NEXT_PUBLIC_HOST}/api/item-abas?populate=*`,
   )
   const resCategoriasAbas = await fetch(
     `${process.env.NEXT_PUBLIC_HOST}/api/categoria-abas?populate=*`,
@@ -84,5 +87,11 @@ MyApp.getInitialProps = async () => {
   const abas = await resAbas.json()
   const categoriaAbas = await resCategoriasAbas.json()
 
-  return { navigation, categorias, atende, abas, categoriaAbas }
+  return {
+    navigation,
+    categorias,
+    atende,
+    abas,
+    categoriaAbas,
+  }
 }
